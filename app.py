@@ -1,10 +1,11 @@
 from flask import Flask, make_response , render_template , request , flash , redirect, send_file, send_from_directory
+from grpc import UnaryStreamClientInterceptor
 from werkzeug.utils import secure_filename 
 from processing import extractText
 import os
 from docx import Document
 
-UPLOAD_FOLDER = 'D:/Semaster6/SDP/Project/static/'
+UPLOAD_FOLDER = './static/'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app = Flask(__name__)
@@ -25,6 +26,10 @@ def home():
             # resp.set_cookie('Text', txt)
             return render_template('index.html', txt=txt , filename = filename)
     else:
+        if not os.path.exists(os.path.join(UPLOAD_FOLDER,"word")):  # if path not exists than create dir.
+            os.makedirs(os.path.join(UPLOAD_FOLDER,"word"))
+        if not os.path.exists(os.path.join(UPLOAD_FOLDER,"img")):  # if path not exists than create dir.
+            os.makedirs(os.path.join(UPLOAD_FOLDER,"img"))
         return render_template('index.html')
 
 

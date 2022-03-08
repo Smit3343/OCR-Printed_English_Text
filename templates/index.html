@@ -83,7 +83,7 @@
 
       <div class="row">
 
-        <div class="col file-container center">
+        <div class="card col file-container center">
 
           <form action="/" method="post" enctype="multipart/form-data">
 
@@ -97,7 +97,7 @@
 
             <div class="row">
               <div class="center box">
-                <div class="btn-container">
+                <div class="btn-container ">
                   <input type="file" value="" name="file" id="fileup" />
                   <div class="uploadSection" onclick="clickFileup()">
                     <h1 class="imgupload"><i class="fas fa-file-image"></i></h1>
@@ -119,7 +119,7 @@
             <div class="row submit-container">
               <input type="submit" value="Submit" class="btn btn-primary" id="submitbtn" />
               <button type="button" class="btn" disabled="disabled" id="fakebtn">
-                Submit <i class="fas fa-minus-circle"></i>
+                Submit
               </button>
             </div>
 
@@ -127,13 +127,12 @@
 
         </div>
 
-        <div class="col second-container">
+        <div class="card col second-container">
           <div class="row">
 
             <div class="col out-header">
               <p class="output title">Here's Your Output</p>
-              <i id="clipImg" onClick="copyToClipboard()" 
-                class="out-icon clipboard fas fa-copy"></i>
+              <i id="clipImg" onClick="copyToClipboard()" class="out-icon clipboard fas fa-copy"></i>
 
             </div>
 
@@ -160,8 +159,7 @@
 
             <div class="col">
 
-              <i onclick="saveTextAsFile(text.value,this.id)" id="pdf" name="pdf"
-                class="out-icon fas fa-file-pdf"></i>
+              <i onclick="saveTextAsFile(text.value,this.id)" id="pdf" name="pdf" class="out-icon fas fa-file-pdf"></i>
               <!-- <button >
                 <img class="out-icon" src="../static/pdf.png" alt="pdf">
               </button> -->
@@ -171,6 +169,7 @@
 
         </div>
       </div>
+    </div>
   </section>
 
   <!-- Footer -->

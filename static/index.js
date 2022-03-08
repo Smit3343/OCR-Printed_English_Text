@@ -27,6 +27,9 @@ function changeTheme() {
     document.getElementById('img-icon').classList.remove("fa-moon")
   }
 };
+
+
+
 var imageName = document.getElementById('hasImage').innerHTML;
 if(imageName != "") {
   let path = "../static/img/";
@@ -118,3 +121,4 @@ function clickFileup() {
 function clickSubmit() {
   document.getElementById('word').click();
 };
+
