@@ -6,12 +6,12 @@ function copyToClipboard() {
     if (document.getElementById("text").value != "") {
       navigator.clipboard.writeText(document.getElementById("text").value);
       var copy = document.getElementById("clipImg");
-      copy.classList.add('fa-check-circle');
-      copy.classList.remove('fa-copy');
+      copy.classList.add("fa-check-circle");
+      copy.classList.remove("fa-copy");
       setTimeout(() => {
         var temp = document.getElementById("clipImg");
-        temp.classList.add('fa-copy');
-        temp.classList.remove('fa-check-circle');
+        temp.classList.add("fa-copy");
+        temp.classList.remove("fa-check-circle");
       }, 1000);
     } else alert("Please First Upload Image");
   }
@@ -19,28 +19,25 @@ function copyToClipboard() {
 
 function changeTheme() {
   document.body.classList.toggle("theme");
-  if (document.getElementById('img-icon').classList.contains("fa-sun")) {
-    document.getElementById('img-icon').classList.remove("fa-sun")
-    document.getElementById('img-icon').classList.add("fa-moon")
+  if (document.getElementById("img-icon").classList.contains("fa-sun")) {
+    document.getElementById("img-icon").classList.remove("fa-sun");
+    document.getElementById("img-icon").classList.add("fa-moon");
   } else {
-    document.getElementById('img-icon').classList.add("fa-sun")
-    document.getElementById('img-icon').classList.remove("fa-moon")
+    document.getElementById("img-icon").classList.add("fa-sun");
+    document.getElementById("img-icon").classList.remove("fa-moon");
   }
-};
+}
 
-
-
-var imageName = document.getElementById('hasImage').innerHTML;
-if(imageName != "") {
+var imageName = document.getElementById("hasImage").innerHTML;
+if (imageName != "") {
   let path = "../static/img/";
   path = path.concat(imageName);
-  document.getElementById('fileImage').src = path;
+  document.getElementById("fileImage").src = path;
   document.getElementById("fileImage").classList.add("fileCss");
   $(".imgupload").hide("slow");
   $("#namefile").html(imageName);
   $("#namefile").css({ color: "black", "font-weight": 700 });
 }
-
 
 $("#fileup").change(function () {
   var res = $("#fileup").val();
@@ -101,24 +98,30 @@ function saveTextAsFile(textToWrite, checkId) {
         downloadLink.style.display = "none";
         document.body.appendChild(downloadLink);
       }
-
       downloadLink.click();
-    } else if(checkId == "pdf") {
-      var doc = new jsPDF();
-      doc.text(20, 20, textToWrite);
-      // Save the PDF
-      doc.save("Download.pdf");
+    } else if (checkId == "pdf") {
+      var pdf = new jsPDF();
+      var splitTitle = pdf.splitTextToSize(textToWrite, 270);
+      var pageHeight = pdf.internal.pageSize.height;
+      pdf.setFontType("normal");
+      pdf.setFontSize("11");
+      var y = 7;
+      for (var i = 0; i < splitTitle.length; i++) {
+        if (y > 280) {
+          y = 10;
+          pdf.addPage();
+        }
+        pdf.text(15, y, splitTitle[i]);
+        y = y + 7;
+      }
+      pdf.save("download.pdf");
+    } else {
+      document.getElementById("wordText").value = textToWrite;
+      document.getElementById("word").click();
     }
-    else document.getElementById("wordText").value = text;
   } else alert("Please First Upload Image");
 }
 
-
 function clickFileup() {
-  document.getElementById('fileup').click();
-};
-
-function clickSubmit() {
-  document.getElementById('word').click();
-};
-
+  document.getElementById("fileup").click();
+}
