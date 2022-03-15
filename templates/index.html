@@ -40,7 +40,10 @@
 
 </head>
 
-<body>
+<body onload="render()">
+
+  <div id="loading"></div>
+  <div id="pageloader"></div>
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg nav-custom">
     <div class="container-fluid">
@@ -84,8 +87,8 @@
       <div class="row">
 
         <div class="card col file-container center">
-
-          <form action="/" method="post" enctype="multipart/form-data">
+          
+          <form action="/" id="myform" method="post" enctype="multipart/form-data">
 
             <div class="row">
 
@@ -118,7 +121,7 @@
 
             <div class="row submit-container">
               <input type="submit" value="Submit" class="btn btn-primary" id="submitbtn" />
-              <button type="button" class="btn" disabled="disabled" id="fakebtn">
+              <button onclick="load()" type="button" class="btn" disabled="disabled" id="fakebtn">
                 Submit
               </button>
             </div>

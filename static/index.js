@@ -125,3 +125,19 @@ function saveTextAsFile(textToWrite, checkId) {
 function clickFileup() {
   document.getElementById("fileup").click();
 }
+
+
+function render() {
+  document.getElementById('loading').style.display = 'none';
+}
+
+function load() {
+  location.reload();
+}
+
+
+$(document).ready(function(){
+  $("#myform").on("submit", function(){
+    $("#pageloader").fadeIn();
+  });//submit
+});
