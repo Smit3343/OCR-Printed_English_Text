@@ -1,5 +1,4 @@
 from flask import Flask, make_response , render_template , request , flash , redirect, send_file, send_from_directory
-from grpc import UnaryStreamClientInterceptor
 from werkzeug.utils import secure_filename 
 from processing import extractText
 import os
