@@ -9,8 +9,8 @@ import imutils
 # Vertical back projection
 def vProject(binary):
     temp=binary.copy()
-    temp[temp==0]=1
-    temp[temp==255]=0
+    temp[temp==0]=1 #1= black pixel
+    temp[temp==255]=0 #0= white pixel
     v_projection=np.sum(temp,axis=0)
     return v_projection
 

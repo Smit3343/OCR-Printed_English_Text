@@ -5,3 +5,4 @@ flaskenv
 static/img
 static/word
 __pycache__
+./Dataset

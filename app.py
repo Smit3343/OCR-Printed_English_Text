@@ -1,3 +1,4 @@
+from urllib import response
 from flask import Flask, make_response , render_template , request , flash , redirect, send_file, send_from_directory
 from werkzeug.utils import secure_filename 
 from processing import extractText
@@ -21,8 +22,7 @@ def home():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'],os.path.join('img',filename)))
             txt = extractText(filename)
-            # resp = make_response()
-            # resp.set_cookie('Text', txt)
+            
             return render_template('index.html', txt=txt , filename = filename)
     else:
         if not os.path.exists(os.path.join(UPLOAD_FOLDER,"word")):  # if path not exists than create dir.
